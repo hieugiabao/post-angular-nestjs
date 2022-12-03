@@ -8,6 +8,12 @@ import { DbConfig, dbConfig } from '@nx-post/api/utils-config';
 import { ApiFeaturePostModule } from '@nx-post/api/feature-post';
 import { ApiFeatureUserModule } from '@nx-post/api/feature-user';
 import { ApiFeatureCommentModule } from '@nx-post/api/feature-comment';
+import {
+  BaseProfile,
+  CommentProfile,
+  PostProfile,
+  UserProfile,
+} from '@nx-post/api/shared-data-access-mappings';
 
 @Module({
   imports: [
@@ -29,5 +35,6 @@ import { ApiFeatureCommentModule } from '@nx-post/api/feature-comment';
     ApiFeatureUserModule,
     ApiFeatureCommentModule,
   ],
+  // providers: [BaseProfile, UserProfile, PostProfile, CommentProfile],
 })
 export class AppModule {}
