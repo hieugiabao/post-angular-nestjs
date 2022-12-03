@@ -20,16 +20,26 @@ export class ApiExceptionDto {
   @ApiPropertyOptional()
   timestamp?: string;
 
+  @ApiPropertyOptional()
+  stack?: string;
+
+  @ApiPropertyOptional()
+  path?: string;
+
   constructor(
     message: string,
     error: string,
+    stack: string,
     errors: unknown,
+    path: string,
     statusCode: number
   ) {
     this.message = message;
     this.error = error;
     this.errors = errors;
+    this.stack = stack;
     this.statusCode = statusCode;
+    this.path = path;
     this.status = HttpStatus[statusCode];
     this.timestamp = new Date().toISOString();
   }

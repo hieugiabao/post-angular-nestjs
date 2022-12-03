@@ -5,6 +5,7 @@ import * as compression from 'compression';
 import helmet from 'helmet';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
+import { HttpExceptionFilter } from '@nx-post/api/shared-utils-exception-filters';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -36,6 +37,7 @@ async function bootstrap() {
     },
   });
 
+  app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(config.port, () => {
     Logger.log(
       `🚀 Application is running on: ${config.domain}`,

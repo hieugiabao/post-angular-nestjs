@@ -1,0 +1,35 @@
+{
+  "name": "api-data-access-security",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/data-access-security/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/api/data-access-security",
+        "tsConfig": "libs/api/data-access-security/tsconfig.lib.json",
+        "packageJson": "libs/api/data-access-security/package.json",
+        "main": "libs/api/data-access-security/src/index.ts",
+        "assets": ["libs/api/data-access-security/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/data-access-security/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/api/data-access-security/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:api", "type:data-access", "context:security"]
+}

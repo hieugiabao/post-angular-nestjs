@@ -1,0 +1,35 @@
+{
+  "name": "api-shared-utils-exception-filters",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/shared-utils-exception-filters/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/api/shared-utils-exception-filters",
+        "tsConfig": "libs/api/shared-utils-exception-filters/tsconfig.lib.json",
+        "packageJson": "libs/api/shared-utils-exception-filters/package.json",
+        "main": "libs/api/shared-utils-exception-filters/src/index.ts",
+        "assets": ["libs/api/shared-utils-exception-filters/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/shared-utils-exception-filters/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/api/shared-utils-exception-filters/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:api", "type:utils", "context:shared"]
+}

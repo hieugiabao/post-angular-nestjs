@@ -1,6 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
-import { ApiDataAccessAuthModule } from 'libs/api/data-access-auth/src';
+import { ApiDataAccessAuthModule } from '@nx-post/api/data-access-auth';
 
 @Global()
 @Module({
