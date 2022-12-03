@@ -57,14 +57,14 @@ export class UserEntity extends BaseEntity {
   bio?: string;
 
   @OneToMany(() => PostEntity, (post) => post.author)
-  @AutoMap(() => PostEntity)
+  @AutoMap(() => [PostEntity])
   posts = new Collection<PostEntity>(this);
 
   @ManyToMany(() => PostEntity)
-  @AutoMap(() => PostEntity)
+  @AutoMap(() => [PostEntity])
   liked = new Collection<PostEntity>(this);
 
   @OneToMany(() => CommentEntity, (comment) => comment.author)
-  @AutoMap(() => CommentEntity)
+  @AutoMap(() => [CommentEntity])
   comments = new Collection<CommentEntity>(this);
 }

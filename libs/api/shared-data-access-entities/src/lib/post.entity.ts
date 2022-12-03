@@ -29,10 +29,10 @@ export class PostEntity extends BaseEntity {
   @OneToMany(() => CommentEntity, (comment) => comment.post, {
     cascade: [Cascade.ALL],
   })
-  @AutoMap(() => CommentEntity)
+  @AutoMap(() => [CommentEntity])
   comments = new Collection<CommentEntity>(this);
 
   @ManyToMany(() => UserEntity, (user) => user.liked)
-  @AutoMap(() => UserEntity)
+  @AutoMap(() => [UserEntity])
   likedBy = new Collection<UserEntity>(this);
 }
