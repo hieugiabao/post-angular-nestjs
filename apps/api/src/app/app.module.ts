@@ -14,6 +14,7 @@ import {
   PostProfile,
   UserProfile,
 } from '@nx-post/api/shared-data-access-mappings';
+import { ApiFeatureAuthModule } from 'libs/api/feature-auth/src';
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import {
     ApiFeaturePostModule,
     ApiFeatureUserModule,
     ApiFeatureCommentModule,
+    ApiFeatureAuthModule,
   ],
-  // providers: [BaseProfile, UserProfile, PostProfile, CommentProfile],
+  providers: [BaseProfile, UserProfile, PostProfile, CommentProfile],
 })
 export class AppModule {}
