@@ -1,8 +1,9 @@
-import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
-import { PostEntity } from '@nx-post/api/shared-data-access-entities';
+import { ApiDataAccessPostModule } from '@nx-post/api/data-access-post';
+import { PostController } from './post.controller';
 
 @Module({
-  imports: [MikroOrmModule.forFeature([PostEntity])],
+  imports: [ApiDataAccessPostModule],
+  controllers: [PostController],
 })
 export class ApiFeaturePostModule {}

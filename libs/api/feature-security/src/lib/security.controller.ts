@@ -6,8 +6,10 @@ import {
   TokenResultDto,
 } from '@nx-post/api/shared-data-access-dtos';
 import { SecurityService } from '@nx-post/api/data-access-security';
+import { ApiErrors } from '@nx-post/api/shared-utils-decorators';
 
 @ApiTags('Security')
+@ApiErrors()
 @Controller('security')
 export class SecurityController {
   constructor(private securityService: SecurityService) {}
