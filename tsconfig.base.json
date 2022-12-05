@@ -53,7 +53,10 @@
       "@nx-post/api/shared-utils-exception-filters": [
         "libs/api/shared-utils-exception-filters/src/index.ts"
       ],
-      "@nx-post/api/utils-config": ["libs/api/utils-config/src/index.ts"]
+      "@nx-post/api/utils-config": ["libs/api/utils-config/src/index.ts"],
+      "@nx-post/web/shared-data-access-api-sdk": [
+        "libs/web/shared-data-access-api-sdk/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
