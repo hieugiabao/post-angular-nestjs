@@ -1,8 +1,9 @@
-import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
-import { CommentEntity } from '@nx-post/api/shared-data-access-entities';
+import { ApiDataAccessCommentModule } from '@nx-post/api/data-access-comment';
+import { CommentController } from './comment.controller';
 
 @Module({
-  imports: [MikroOrmModule.forFeature([CommentEntity])],
+  imports: [ApiDataAccessCommentModule],
+  controllers: [CommentController],
 })
 export class ApiFeatureCommentModule {}
