@@ -1,5 +1,5 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import {
   LoginParamsDto,
   RegisterParamsDto,
@@ -21,7 +21,7 @@ export class SecurityController {
   }
 
   @Post('login')
-  @ApiCreatedResponse({ type: TokenResultDto })
+  @ApiOkResponse({ type: TokenResultDto })
   @HttpCode(HttpStatus.OK)
   async login(@Body() dto: LoginParamsDto): Promise<TokenResultDto> {
     return await this.securityService.login(dto);
