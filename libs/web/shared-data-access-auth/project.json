@@ -1,0 +1,35 @@
+{
+  "name": "web-shared-data-access-auth",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/shared-data-access-auth/src",
+  "prefix": "ct",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/web/shared-data-access-auth/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/web/shared-data-access-auth/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/web/shared-data-access-auth/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared-data-access-auth/**/*.ts",
+          "libs/web/shared-data-access-auth/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:web", "type:data-access", "context:shared"]
+}

@@ -61,6 +61,9 @@
       "@nx-post/web/feature-shell": ["libs/web/feature-shell/src/index.ts"],
       "@nx-post/web/shared-data-access-api-sdk": [
         "libs/web/shared-data-access-api-sdk/src/index.ts"
+      ],
+      "@nx-post/web/shared-data-access-auth": [
+        "libs/web/shared-data-access-auth/src/index.ts"
       ]
     }
   },

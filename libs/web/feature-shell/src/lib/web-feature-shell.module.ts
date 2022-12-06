@@ -1,3 +1,4 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { RouterModule } from '@angular/router';
 import { LayoutComponent, LayoutComponentModule } from './layout.component';
 import { NgModule } from '@angular/core';
