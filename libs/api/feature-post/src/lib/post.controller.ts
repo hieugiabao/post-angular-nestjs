@@ -9,7 +9,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { PostService } from '@nx-post/api/data-access-post';
 import {
   AuthUserDto,
@@ -48,7 +53,7 @@ export class PostController {
 
   @Post()
   @UseGuards(AuthGuard())
-  @ApiOkResponse({ type: PostDto })
+  @ApiCreatedResponse({ type: PostDto })
   async create(
     @CurrentUser() currentUser: AuthUserDto,
     @Body() dto: CreatePostParamsDto

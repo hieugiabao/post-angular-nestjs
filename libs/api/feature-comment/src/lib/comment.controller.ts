@@ -8,7 +8,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { CommentService } from '@nx-post/api/data-access-comment';
 import {
   AuthUserDto,
@@ -37,7 +42,7 @@ export class CommentController {
   }
 
   @Post()
-  @ApiOkResponse({ type: CommentDto })
+  @ApiCreatedResponse({ type: CommentDto })
   @UseGuards(AuthGuard())
   async create(
     @CurrentUser() currentUser: AuthUserDto,
