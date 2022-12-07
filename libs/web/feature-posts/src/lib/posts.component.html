@@ -1,0 +1,18 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="grid mt-4">
+    <div class="col-8 col-offset-2">
+      <ct-post-input (postSubmit)="onPostSubmit($event)"></ct-post-input>
+      <p-dataView [value]="vm.posts" layout="list">
+        <ng-template pTemplate="listItem" let-post>
+          <ct-post-item
+            [post]="post"
+            [isLiked]="vm.likedByMe[post.id]"
+            (like)="onLike(post.id)"
+            (unlike)="onUnlike(post.id)"
+            (comment)="onComment(post.id)"
+          ></ct-post-item>
+        </ng-template>
+      </p-dataView>
+    </div>
+  </div>
+</ng-container>

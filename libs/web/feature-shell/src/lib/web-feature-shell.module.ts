@@ -1,9 +1,12 @@
-/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { RouterModule } from '@angular/router';
 import { LayoutComponent, LayoutComponentModule } from './layout.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import {
+  AuthGuard,
+  authInterceptorProvider,
+} from '@nx-post/web/shared-data-access-auth';
 
 @NgModule({
   imports: [
@@ -15,6 +18,18 @@ import { HttpClientModule } from '@angular/common/http';
         path: '',
         component: LayoutComponent,
         children: [
+          {
+            path: '',
+            redirectTo: 'posts',
+            pathMatch: 'full',
+          },
+          {
+            path: 'posts',
+            canLoad: [AuthGuard],
+            loadChildren: async () =>
+              (await import('@nx-post/web/feature-posts'))
+                .WebFeaturePostsModule,
+          },
           {
             path: 'login',
             loadChildren: async () =>
@@ -32,5 +47,6 @@ import { HttpClientModule } from '@angular/common/http';
     ]),
   ],
   exports: [RouterModule],
+  providers: [authInterceptorProvider],
 })
 export class WebFeatureShellModule {}

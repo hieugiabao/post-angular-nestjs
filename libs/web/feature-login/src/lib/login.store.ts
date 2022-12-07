@@ -1,8 +1,7 @@
-/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ComponentStore } from '@ngrx/component-store';
-import { LayoutMessageService } from '@nx-post/web/feature-shell';
+import { LayoutMessageService } from '@nx-post/web/data-access-shell';
 import {
   ApiExceptionDto,
   LoginParamsDto,
@@ -27,6 +26,7 @@ export class LoginStore extends ComponentStore<Record<string, never>> {
       this.securityControllerService.login(dto).pipe(
         tap({
           next: (tokenResult) => {
+            console.log(tokenResult);
             this.authStore.setState(tokenResult);
             void this.router.navigate(['/']);
           },

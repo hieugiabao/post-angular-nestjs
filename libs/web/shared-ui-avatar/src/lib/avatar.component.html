@@ -1,0 +1,9 @@
+<img
+  *ngIf="avatar; else noAvatar"
+  [src]="avatar"
+  alt="User Avatar"
+  class="w-12 h-12 border-circle"
+/>
+<ng-template #noAvatar>
+  <i class="pi pi-user"></i>
+</ng-template>

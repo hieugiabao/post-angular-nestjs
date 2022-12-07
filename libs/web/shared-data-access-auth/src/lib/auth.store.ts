@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { UserInfomationDto } from '@nx-post/web/shared-data-access-api-sdk';
-import { tap } from 'rxjs';
+import { filter, tap } from 'rxjs';
 
 export interface AuthState {
   token?: string;
@@ -12,7 +12,9 @@ export interface AuthState {
   providedIn: 'root',
 })
 export class AuthStore extends ComponentStore<AuthState> {
-  readonly token$ = this.select((state) => state.token !== undefined);
+  readonly token$ = this.select((state) => state.token).pipe(
+    filter((token) => token !== undefined)
+  );
   readonly user$ = this.select((state) => state.user);
   readonly isAuthenticated$ = this.select(this.token$, (token) => !!token);
 
@@ -40,7 +42,7 @@ export class AuthStore extends ComponentStore<AuthState> {
         user: stringifiedUser ? JSON.parse(stringifiedUser) : undefined,
       });
     } else {
-      this.setState({});
+      this.setState({ token: '' });
     }
     this.storeLocal(this.state$);
   }

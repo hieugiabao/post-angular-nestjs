@@ -1,0 +1,35 @@
+{
+  "name": "web-ui-post-input",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/ui-post-input/src",
+  "prefix": "ct",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/web/ui-post-input/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/web/ui-post-input/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/web/ui-post-input/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/ui-post-input/**/*.ts",
+          "libs/web/ui-post-input/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:web", "type:ui", "context:post-input"]
+}

@@ -1,15 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  NgModule,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LayoutMessageService } from '@nx-post/web/data-access-shell';
 import { MenuItem, MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 import { MenubarModule } from 'primeng/menubar';
-import { LayoutMessageService } from './layout-message.service';
-import { AuthStore } from '@nx-post/web/shared-data-access-auth';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'ct-layout',
@@ -17,17 +11,11 @@ import { AuthStore } from '@nx-post/web/shared-data-access-auth';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [LayoutMessageService, MessageService],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
   menuItems: MenuItem[] = [
     { label: 'Login', routerLink: '/login' },
     { label: 'Register', routerLink: '/register' },
   ];
-
-  constructor(private authStore: AuthStore) {}
-
-  ngOnInit() {
-    this.authStore.init();
-  }
 }
 
 @NgModule({

@@ -1,0 +1,35 @@
+{
+  "name": "web-shared-ui-avatar",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/shared-ui-avatar/src",
+  "prefix": "ct",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/web/shared-ui-avatar/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/web/shared-ui-avatar/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/web/shared-ui-avatar/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared-ui-avatar/**/*.ts",
+          "libs/web/shared-ui-avatar/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:web", "type:ui", "context:shared"]
+}

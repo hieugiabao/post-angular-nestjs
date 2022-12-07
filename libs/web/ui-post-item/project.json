@@ -1,0 +1,35 @@
+{
+  "name": "web-ui-post-item",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/ui-post-item/src",
+  "prefix": "ct",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/web/ui-post-item/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/web/ui-post-item/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/web/ui-post-item/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/ui-post-item/**/*.ts",
+          "libs/web/ui-post-item/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:web", "type:ui", "context:post-item"]
+}

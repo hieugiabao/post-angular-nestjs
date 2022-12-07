@@ -1,0 +1,8 @@
+<div class="flex">
+  <ct-avatar [avatar]="avatarUrl"></ct-avatar>
+  <div class="flex flex-column ml-2">
+    <h4 class="mb-0">{{ username }}</h4>
+    <h5 class="font-light my-0">({{ name || username }})</h5>
+  </div>
+  <small class="ml-auto">{{ updatedAt | date : 'short' }}</small>
+</div>

@@ -1,0 +1,35 @@
+{
+  "name": "web-data-access-shell",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/data-access-shell/src",
+  "prefix": "ct",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/web/data-access-shell/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/web/data-access-shell/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/web/data-access-shell/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/data-access-shell/**/*.ts",
+          "libs/web/data-access-shell/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:web", "type:data-access", "context:shell"]
+}

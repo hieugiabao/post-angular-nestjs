@@ -1,0 +1,35 @@
+{
+  "name": "web-feature-posts",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/feature-posts/src",
+  "prefix": "ct",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/web/feature-posts/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/web/feature-posts/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/web/feature-posts/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/feature-posts/**/*.ts",
+          "libs/web/feature-posts/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:web", "type:feature", "context:posts"]
+}
