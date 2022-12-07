@@ -6,7 +6,15 @@ import {
   PostDto,
 } from '@nx-post/web/shared-data-access-api-sdk';
 import { AuthStore } from '@nx-post/web/shared-data-access-auth';
-import { concatMap, Observable, pipe, switchMap, tap } from 'rxjs';
+import {
+  concatMap,
+  map,
+  Observable,
+  pipe,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 
 export interface PostsState {
   posts: PostDto[];
@@ -73,13 +81,36 @@ export class PostsStore extends ComponentStore<PostsState> {
 
   readonly like = this.effect<string>(
     concatMap((postId) =>
-      this.postControllerService.like(postId).pipe(this.updatePostInplace())
+      this.postControllerService
+        .like(postId)
+        .pipe(
+          withLatestFrom(this.authStore.user$),
+          map(([post, user]) => {
+            post.likedByCount++;
+            user && post.likedBy.push(user);
+            return post;
+          })
+        )
+        .pipe(this.updatePostInplace())
     )
   );
 
   readonly unlike = this.effect<string>(
     concatMap((postId) =>
-      this.postControllerService.unlike(postId).pipe(this.updatePostInplace())
+      this.postControllerService
+        .unlike(postId)
+        .pipe(
+          withLatestFrom(this.authStore.user$),
+          map(([post, user]) => {
+            post.likedByCount--;
+            user &&
+              (post.likedBy = post.likedBy.filter(
+                (userPost) => userPost.id !== user.id
+              ));
+            return post;
+          })
+        )
+        .pipe(this.updatePostInplace())
     )
   );
 
