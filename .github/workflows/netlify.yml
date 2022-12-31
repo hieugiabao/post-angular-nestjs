@@ -8,6 +8,10 @@ on:
     branches:
       - deploy
       - test-ci
+  push:
+    branches:
+      - deploy
+      - test-ci
   workflow_dispatch:
 jobs:
   deploy:
