@@ -10,7 +10,7 @@ runs:
   steps:
     - name: Check Angular Source
       id: check-angular-source
-      use: tj-actions/changed-files@v10
+      uses: tj-actions/changed-files@v10
       with:
         files: |
           package.json
