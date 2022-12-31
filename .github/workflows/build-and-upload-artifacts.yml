@@ -64,7 +64,7 @@ jobs:
 
       - name: Install dependencies
         if: ${{ steps.cached-deps.outputs.cache-hit != 'true' }}
-        run: pnpm install
+        run: npm install -g pnpm && pnpm install
 
       - name: Download Nx Cache
         continue-on-error: true
