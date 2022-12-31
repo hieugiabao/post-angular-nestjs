@@ -15,5 +15,5 @@ runs:
         files: |
           package.json
           nx.json
-          libs/**/*.*
-          apps/**/*.*
+          libs/web/**
+          apps/web/**
