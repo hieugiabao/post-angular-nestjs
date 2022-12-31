@@ -7,6 +7,7 @@ on:
       - completed
     branches:
       - deploy
+      - test-ci
   workflow_dispatch:
 jobs:
   deploy:
