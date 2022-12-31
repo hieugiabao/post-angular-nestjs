@@ -8,6 +8,7 @@
     "build:web": "nx build web",
     "build:web:affected": "nx affected:build web --prod",
     "build:web:prod": "nx build web --prod",
+    "build:api:prod": "nx build api --prod",
     "test": "nx test"
   },
   "private": true,
