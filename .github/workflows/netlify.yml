@@ -1,0 +1,28 @@
+name: Netlify Deploy
+on:
+  workflow_run:
+    workflows:
+      - 'Build and Upload Artifacts'
+    types:
+      - completed
+    branches:
+      - deploy
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: post-build-artifacts
+          workflow: build-and-upload-artifacts.yml
+          path: ./dist
+
+      - name: Deploy Netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=./dist --prod

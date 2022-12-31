@@ -4,7 +4,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
+    "build:api": "nx build api",
+    "build:web": "nx build web",
+    "build:web:affected": "nx affected:build web --prod",
+    "build:web:prod": "nx build web --prod",
     "test": "nx test"
   },
   "private": true,
