@@ -1,7 +1,8 @@
 name: Netlify Deploy
 on:
   workflow_run:
-    workflows: [build-and-upload-artifacts]
+    workflows:
+      - 'Build and Upload Artifacts'
     types:
       - completed
     branches:
