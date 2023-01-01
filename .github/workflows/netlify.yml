@@ -6,6 +6,7 @@ on:
       - completed
     branches:
       - test-ci
+    strategy: wait-all
   push:
     branches:
       - test-ci
