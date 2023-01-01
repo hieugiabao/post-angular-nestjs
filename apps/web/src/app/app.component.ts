@@ -7,7 +7,7 @@ import { AuthStore } from '@nx-post/web/shared-data-access-auth';
   styles: [],
 })
 export class AppComponent implements OnInit {
-  title = 'Post';
+  title = 'Post App';
 
   constructor(private authStore: AuthStore) {}
 
