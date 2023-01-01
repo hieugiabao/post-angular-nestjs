@@ -6,6 +6,7 @@ on:
       - completed
     branches: [test-ci]
     strategy: wait-all
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
