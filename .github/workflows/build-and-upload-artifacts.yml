@@ -2,6 +2,10 @@ name: Build and Upload Artifacts
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [Netlify Deploy]
+    types:
+      - completed
   push:
     branches:
       - test-ci
