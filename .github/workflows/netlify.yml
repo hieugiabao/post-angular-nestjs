@@ -7,9 +7,6 @@ on:
     branches:
       - test-ci
     strategy: wait-all
-  push:
-    branches:
-      - test-ci
   workflow_dispatch:
 jobs:
   deploy:
