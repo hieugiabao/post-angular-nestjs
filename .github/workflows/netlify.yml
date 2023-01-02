@@ -4,8 +4,7 @@ on:
     workflows: ['Build and Upload Artifacts']
     types:
       - completed
-    branches: [test-ci]
-    strategy: wait-all
+#     branches: [test-ci]
 jobs:
   deploy:
     runs-on: ubuntu-latest
