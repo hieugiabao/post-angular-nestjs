@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: process.env['API_BASE_URL'] || '',
+  apiBaseUrl: 'https://post-api-g2w1.onrender.com',
 };
