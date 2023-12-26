@@ -1,1 +1,9 @@
-post works
+<div class="grid">
+  <div class="col-8 col-offset-2">
+    <ng-container *ngIf="post$ | async as post">
+      <ct-post-item [post]="post" (like)="onLike(post.id)" (unlike)="onUnlike(post.id)"></ct-post-item>
+      <ct-post-comments [comments]="post.comments"></ct-post-comments>
+      <ct-post-input (postSubmit)="onSubmit($event, post.id)"></ct-post-input>
+    </ng-container>
+  </div>
+</div>
