@@ -1,8 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/api/*",
-      "dest": "https://post-api-g2w1.onrender.com/api/*"
-    }
-  ]
-}
